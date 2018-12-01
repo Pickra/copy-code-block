@@ -1,0 +1,19 @@
+{
+  "name": "@pickra/copy-code-block",
+  "version": "0.0.1",
+  "description": "A solution to display code in the browser and copy it to the clipboard",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": ""
+  },
+  "keywords": [
+    "copy",
+    "code",
+    "clipboard"
+  ],
+  "author": "Ari Picker",
+  "license": "0BSD",
+  "devDependencies": {
+    "@storybook/html": "4.0.10"
+  }
+}
