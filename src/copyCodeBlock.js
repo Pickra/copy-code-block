@@ -13,12 +13,18 @@ export default (string, opts) => {
                 type='button'
                 class='${copyButton}'
                 onclick="(function() {
-                    var el = document.createElement('textarea');
-                    el.innerHTML = '${getClipboardString(string)}';
-                    document.body.appendChild(el);
-                    el.select();
+                    var textarea = document.createElement('textarea');
+                    var button = document.querySelector('.${copyButton}');
+
+                    textarea.innerHTML = '${getClipboardString(string)}';
+                    document.body.appendChild(textarea);
+                    textarea.select();
+
+                    button.innerHTML = 'Copied!';
+                    setTimeout(function() { button.innerHTML = 'Copy'; }, 1000);
+
                     document.execCommand('copy');
-                    document.body.removeChild(el);
+                    document.body.removeChild(textarea);
                 })();"
             >Copy</button>
         </div>
