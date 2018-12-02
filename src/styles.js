@@ -1,44 +1,46 @@
 import csjs from 'csjs-inject';
-
-const defaultOptions = {
-    containerBackgroundColor: 'red',
-    containerColor: 'green'
-};
-
-const getMergedOptions = customOptions => {
-    return {...defaultOptions, ...customOptions};
-};
+import { getMergedOptions } from './helpers';
 
 export default customOptions => {
     const {
-        containerBackgroundColor, containerColor
+        containerBackgroundColor, containerColor, containerPadding,
+        containerMarginBottom, displayCodeWidth, copyButtonWidth,
+        copyButtonHeight, copyButtonColor, copyButtonBackgroundColor,
+        copyButtonOutline, copyButtonFontSize
     } = getMergedOptions(customOptions);
 
     return csjs`
         .container {
             display: flex;
-            padding: 1rem;
-            margin-bottom: 2rem;
+            padding: ${containerPadding};
+            margin-bottom: ${containerMarginBottom};
             box-sizing: border-box;
             background-color: ${containerBackgroundColor};
-            color: ${containerColor}
+            color: ${containerColor};
         }   
 
         .displayCode {
-            flex-basis: 80%;
-            max-width: 80%;
+            flex-basis: ${displayCodeWidth};
+            max-width: ${displayCodeWidth};
         }
 
         .copyButton {
-            flex-basis: 20%;
-            max-width: 20%;
-            height: 2rem;
-            outline: 2px solid black;
+            height: ${copyButtonHeight};
+            padding: 0;
+            flex-basis: ${copyButtonWidth};
+            max-width: ${copyButtonWidth};
+            color: ${copyButtonColor};
+            background-color: ${copyButtonBackgroundColor};
+            outline: ${copyButtonOutline};
+            border: none;
+            font-size: ${copyButtonFontSize};
             align-self: center;
         }
 
         .copyButton:hover {
             cursor: pointer;
+            color: ${copyButtonBackgroundColor};
+            background-color: ${copyButtonColor};
         }
     `;
 };
