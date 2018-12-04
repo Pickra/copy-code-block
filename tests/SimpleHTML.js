@@ -15,9 +15,7 @@ const expected = `
 module.exports = {
     beforeEach: browser => {
         browser
-            .url(browser.launchUrl + url)
-            .pause(1)
-            .frame(0);
+            .url(browser.launchUrl + url);
     },
 
     "Simple HTML": browser => {

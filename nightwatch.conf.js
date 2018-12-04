@@ -19,7 +19,7 @@ const config = {
 
     test_settings: {
       default: {
-        launch_url: "http://localhost:8080/?selectedKind=",
+        launch_url: "http://localhost:8080/iframe.html?selectedKind=",
         skip_testcases_on_fail: false,
         end_session_on_fail: false,
         screenshots: { enabled: false },
