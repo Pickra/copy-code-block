@@ -2,7 +2,7 @@ const chromeDriver = require("chromedriver");
 const seleniumServer = require("selenium-server");
 
 const config = {
-    src_folders: "./src/tests",
+    src_folders: "./tests",
     output_folder: "./reports",
     custom_commands_path: "",
     test_workers: false,
