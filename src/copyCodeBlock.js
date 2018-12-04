@@ -2,7 +2,6 @@ import { getDisplayString, getClipboardString } from './helpers';
 import styles from './styles';
 
 export default (string, opts = {}) => {
-    opts.unique = Math.floor(Math.random() * 0xFFFF).toString(16)
     const { container, displayCode, copyButton } = styles(opts);
 
     return `
