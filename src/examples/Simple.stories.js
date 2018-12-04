@@ -18,7 +18,7 @@ const doubleQuotesExample = singleQuotesExample.replace(/'/g, '"');
 storiesOf('Simple HTML', module)
     .add('Single quotes', () => `
         ${singleQuotesExample}
-        ${copyCodeBlock(singleQuotesExample, 'single')}
+        ${copyCodeBlock(singleQuotesExample)}
     `)
     .add('Double quotes', () => `
         ${doubleQuotesExample}
