@@ -2,7 +2,7 @@ const chromeDriver = require("chromedriver");
 const seleniumServer = require("selenium-server");
 
 const config = {
-    src_folders: "./src/tests",
+    src_folders: "./tests",
     output_folder: "./reports",
     custom_commands_path: "",
     test_workers: false,
@@ -19,7 +19,7 @@ const config = {
 
     test_settings: {
       default: {
-        launch_url: "http://localhost:8080/?selectedKind=",
+        launch_url: "http://localhost:8080/iframe.html?selectedKind=",
         skip_testcases_on_fail: false,
         end_session_on_fail: false,
         screenshots: { enabled: false },
@@ -27,7 +27,17 @@ const config = {
         desiredCapabilities: { 
           browserName: "chrome",
           javascriptEnabled: true,
-          // chromeOptions: {"args": ["--headless"]}
+          chromeOptions: {
+            // TODO: make clipboard + headless chrome play nice
+            // args: ["--headless"],
+            prefs: { 
+              profile: {
+                default_content_setting_values: {
+                  clipboard: 1
+                }
+              }
+            }
+          }
         }
       }
     }

@@ -21,7 +21,7 @@
     "chromedriver": "2.44.1",
     "csjs-inject": "1.0.1",
     "highlight.js": "^9.13.1",
-    "nightwatch": "0.9.21",
+    "nightwatch": "1.0.14",
     "selenium-server": "3.141.59"
   }
 }
