@@ -1,14 +1,15 @@
 import { getDisplayString, getClipboardString } from './helpers';
 import styles from './styles';
 
-export default (string, opts) => {
+export default (string, opts = {}) => {
+    opts.unique = Math.floor(Math.random() * 0xFFFF).toString(16)
     const { container, displayCode, copyButton } = styles(opts);
 
     return `
         <div class='${container}'>
-            <span class='${displayCode}'>
-                ${getDisplayString(string)}
-            </span>
+            <pre class='${displayCode}'>
+                ${getDisplayString(string, opts)}
+            </pre>
             <button
                 type='button'
                 class='${copyButton}'

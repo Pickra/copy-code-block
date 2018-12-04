@@ -1,12 +1,33 @@
 //////////////// COPY CODE BLOCK ////////////////
 // Iterate over the string and replace code characters as needed
-export const getDisplayString = string => [].map.call(string, s => {
+let hljs;
+
+try {
+    // not importing any languages
+    hljs = require('highlight.js/lib/highlight')
+} catch (e) {
+    // do nothing
+}
+
+const escapeString = string => [].map.call(string, s => {
     if (s.match(/</)) return '&lt;';
     else if (s.match(/>/)) return '&gt;';
-    else if (s.match(/\n|\r/)) return '<br />';
-    else if (s.match(/\s/)) return '&nbsp;';
+    else if (s.match(/ /)) return '&nbsp;';
     else return s;
-}).join('');
+}).join('')
+
+export const getDisplayString = hljs
+?   (string, { lang }) => {
+    // if (lang && !hljs.getLanguage(lang)) {
+    //     hljs.registerLanguage(lang, require(`highlight.js/lib/languages/${lang}`));
+    // }
+    const codeBlock = document.createElement('code');
+    codeBlock.className = `${lang}`;
+    codeBlock.innerHTML = escapeString(string);
+    hljs.highlightBlock(codeBlock);
+    return codeBlock.outerHTML;
+}
+:   escapeString;
 
 export const getClipboardString = string => string
     // Replace carriage returns or newlines with encoded newlines
@@ -20,20 +41,26 @@ export const getClipboardString = string => string
 const textColor = `#0d006d`;
 
 const defaultOptions = {
-    textColor: `#0d006d`,
     containerPadding: '0 1rem 1rem',
-    containerBackgroundColor: '#dbd6ff',
     containerColor: textColor,
     containerMarginBottom: '2rem',
     displayCodeWidth: '80%',
     copyButtonWidth: '20%',
     copyButtonHeight: '2rem',
     copyButtonColor: textColor,
-    copyButtonBackgroundColor: '#ffffff',
-    copyButtonOutline: `2px solid ${textColor}`,
+    copyButtonOutline: `2px solid`,
     copyButtonFontSize: '1rem'
 };
 
+const defaultColors = {
+    background: '#ffffff',
+    foreground: '#0d006d',
+}
+
 export const getMergedOptions = customOptions => {
     return {...defaultOptions, ...customOptions};
+};
+
+export const mergeColors = customColors => {
+    return {...defaultColors, ...customColors};
 };

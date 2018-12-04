@@ -1,8 +1,15 @@
 import copyCodeBlock from '../copyCodeBlock';
 
 const opts = {
-    containerBackgroundColor: 'salmon',
-    containerColor: '#5e008a'
+    lang: 'html',
+    colors: {
+        background: '#222',
+        foreground: '#fff',
+        attr: '#fab',
+        string: '#abe',
+        tag: '#afa',
+        name: '#ea8'
+    }
 };
 
 export default string => copyCodeBlock(string, opts);
