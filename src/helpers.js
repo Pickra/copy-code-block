@@ -1,32 +1,54 @@
 //////////////// COPY CODE BLOCK ////////////////
 // Iterate over the string and replace code characters as needed
-let hljs;
+
+// use the ambient hljs by default
+let hljs = window.hljs;
 
 try {
-    // not importing any languages
-    hljs = require('highlight.js/lib/highlight')
+    // try to import hljs if there is no ambient version
+    // not importing any languages; leaving that up to the consumer
+    hljs = hljs || require('highlight.js/lib/highlight')
 } catch (e) {
     // do nothing
 }
+
+if (hljs) hljs.configure({ useBR: true })
 
 const escapeString = string => [].map.call(string, s => {
     if (s.match(/</)) return '&lt;';
     else if (s.match(/>/)) return '&gt;';
     else if (s.match(/ /)) return '&nbsp;';
+    else if (s.match(/\n/)) return '<br/>'
     else return s;
 }).join('')
 
-export const getDisplayString = hljs
-?   (string, { lang }) => {
-    const codeBlock = document.createElement('code');
-    codeBlock.className = `${lang}`;
-    codeBlock.innerHTML = escapeString(string);
+const AUTO_LANGUAGE = 'auto'
 
-    hljs.highlightBlock(codeBlock);
+export const getDisplayString = (string, { lang }) => {
+    const escaped = escapeString(string)
 
-    return codeBlock.outerHTML;
-}
-:   str => escapeString(str).replace(/\n/g, '<br/>');
+    if (lang !== undefined) {
+        if (!hljs) {
+            // falls back to not using hljs
+            console.warn('hightlight.js is not available')
+        } else if (lang !== AUTO_LANGUAGE && !hljs.getLanguage(lang)) {
+            // falls back to not using hljs
+            console.warn(`hightlight.js does not recognize the language '${lang}'.`)
+        } else {
+            const codeBlock = document.createElement('code');
+            if (lang !== AUTO_LANGUAGE) {
+                codeBlock.className = `${lang}`;
+            }
+            codeBlock.innerHTML = escaped;
+
+            hljs.highlightBlock(codeBlock);
+
+            return codeBlock.outerHTML;
+        }
+    }
+
+    return escaped;
+};
 
 export const getClipboardString = string => string
     // Replace carriage returns or newlines with encoded newlines
@@ -52,7 +74,7 @@ const defaultOptions = {
 };
 
 const defaultColors = {
-    background: '#ffffff',
+    background: 'white',
     foreground: '#0d006d',
 }
 

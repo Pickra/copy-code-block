@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/html';
 import copyCodeBlock from '../copyCodeBlock';
-import custom from './custom';
+import customHtml from './customHtml';
+import customRust from './customRust';
 
 import hljs from 'highlight.js/lib/highlight';
 
@@ -39,26 +40,16 @@ fn main() {
 storiesOf('Simple HTML', module)
     .add('Single quotes', () => `
         ${singleQuotesExample}
-        ${copyCodeBlock(singleQuotesExample, { lang: 'html' })}
+        ${copyCodeBlock(singleQuotesExample) /* Will not run through hljs */}
     `)
     .add('Double quotes', () => `
         ${doubleQuotesExample}
-        ${copyCodeBlock(doubleQuotesExample, { lang: 'html' })}
+        ${copyCodeBlock(doubleQuotesExample, { lang: 'html' }) /* Will run through hljs, but without custom styling */}
     `)
     .add('Custom options', () => `
         ${doubleQuotesExample}
-        ${custom(doubleQuotesExample)}
-    `)
-    .add('Rust example', () => copyCodeBlock(rustExample, {
-        lang: 'rust',
-        colors: {
-            foreground: '#222',
-            function: '#266',
-            title: '#a42',
-            comment: '#2a2',
-            built_in: '#a26',
-            string: '#288',
-            meta: '#555',
-            metaString: '#d2d'
-        }
-    }));
+        ${customHtml(doubleQuotesExample) /* Includes custom styling */}
+    `);
+
+storiesOf('Rust', module)
+    .add('Rust example', () => customRust(rustExample)) /* Includes custom styling */;

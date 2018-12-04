@@ -2,6 +2,13 @@ import csjs from 'csjs';
 import insertCss from 'insert-css';
 import { getMergedOptions, mergeColors } from './helpers';
 
+const ignoredColors = [
+    'foreground',
+    'background',
+    'buttonForeground',
+    'buttonBackground',
+];
+
 export default customOptions => {
     const colors = mergeColors(customOptions.colors);
 
@@ -35,8 +42,8 @@ export default customOptions => {
             padding: 0;
             flex-basis: ${copyButtonWidth};
             max-width: ${copyButtonWidth};
-            color: ${colors.foreground};
-            background-color: ${colors.background};
+            color: ${colors.buttonForeground || colors.foreground};
+            background-color: ${colors.buttonBackground || colors.background};
             outline: ${copyButtonOutline} ${colors.foreground};
             border: none;
             font-size: ${copyButtonFontSize};
@@ -48,22 +55,18 @@ export default customOptions => {
 
         .copyButton:hover {
             cursor: pointer;
-            color: ${colors.background};
-            background-color: ${colors.foreground};
+            color: ${colors.buttonBackground || colors.background};
+            background-color: ${colors.buttonForeground || colors.foreground};
         }
     `;
 
-    const hljsStyles = Object.keys(colors).map(name => {
-        switch (name) {
-            case 'background':
-                return `.${cssMap.container} .hljs { background: ${colors[name]}; }`;
-            case 'foreground':
-                return `.${cssMap.container} .hljs { color: ${colors[name]}; }`;
-            default:
-                const type = name.replace(/[A-Z]/g, char => `-${char.toLowerCase()}`);
-                return `.${cssMap.container} .hljs-${type} { color: ${colors[name]}; }`;
-        }
-    }).filter(p => p).join('\n')
+    const hljsStyles = Object.keys(colors)
+        .filter(k => ignoredColors.indexOf(k) === -1)
+        .map(name => {
+            // convert from camelCase to hyphen-case
+            const type = name.replace(/[A-Z]/g, char => `-${char.toLowerCase()}`);
+            return `.${cssMap.container} .hljs-${type} { color: ${colors[name]}; }`;
+        }).join('\n')
 
     insertCss(csjs.getCss(cssMap) + hljsStyles + `
     .${cssMap.container} .hljs-emphasis { font-style: italic; }

@@ -58,7 +58,17 @@ Then, when you're calling `copyCodeBlock`, tell it what language to use:
 import anHtmlFile from './anHtmlFile.html';
 copyCodeBlock(anHtmlFile, { lang: 'html' });
 ```
-You can choose colors for specific code segments; look at [the rust example](./src/examples/Simple.stories.js#L52) for an idea of how to do this.
+
+If you supply `lang: 'auto'`, this will tell highlight.js to attempt to automatically choose a language from whichever ones are loaded.
+
+You can choose colors for specific code segments.  For an idea of how to do this look at [the custom html example](./src/examples/customHtml.js) or [the custom rust example](./src/examples/customRust.js).  Note that any camelCase color gets converted to hyphen-case, such as `metaString` getting converted to `meta-string` in the rust example.
+
+There are four special colors: `foreground`, `background`, `buttonForeground`, and `buttonBackground`.  These are the colors used for `color` and `backgroundColor` for the entire code block.  If no `buttonForeground` or `buttonBackground` is supplied, they fall back to `foreground` or `background` respectively.
+
+Another option for styling the highlighted code is to choose any of [hightlight.js's built-in styles](https://highlightjs.org/static/demo/) by importing it as so:
+```javascript
+import 'highlight.js/styles/a11y-light.css';
+```
 
 ## Dev
 **Requirements:** `node` 6.0.0 or higher, `npm` 3.8.6 or higher
