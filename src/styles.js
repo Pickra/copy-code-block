@@ -78,12 +78,3 @@ export default customOptions => {
 
     return cssMap;
 };
-
-// .hljs {
-//   display: block;
-//   overflow-x: auto;
-//   background: #2b2b2b;
-//   color: #f8f8f2;
-//   padding: 0.5em;
-// }
-

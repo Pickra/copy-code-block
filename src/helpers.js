@@ -27,7 +27,7 @@ export const getDisplayString = hljs
     hljs.highlightBlock(codeBlock);
     return codeBlock.outerHTML;
 }
-:   escapeString;
+:   str => escapeString(str).replace(/\n/g, '<br/>');
 
 export const getClipboardString = string => string
     // Replace carriage returns or newlines with encoded newlines
