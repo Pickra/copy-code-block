@@ -27,7 +27,17 @@ const config = {
         desiredCapabilities: { 
           browserName: "chrome",
           javascriptEnabled: true,
-          // chromeOptions: {"args": ["--headless"]}
+          chromeOptions: {
+            // TODO: make clipboard + headless chrome play nice
+            // args: ["--headless"],
+            prefs: { 
+              profile: {
+                default_content_setting_values: {
+                  clipboard: 1
+                }
+              }
+            }
+          }
         }
       }
     }
