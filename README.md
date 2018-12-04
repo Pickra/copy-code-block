@@ -8,7 +8,7 @@ Enter `copy-code-block`, a solution to display code in the browser and copy it t
 ## What
 copy-code-block accepts HTML, or HTML in a string, and returns
 a new string. The new string contains the transformed HTML and a
-button that will copy the HTML to the clipboard. 
+button that will copy the HTML to the clipboard.
 ![copy-code-block example image](./img/CCB.png)
 
 ## Credit
@@ -33,13 +33,31 @@ OR
 ```javascript
 `${copyCodeBlock('<div>Thundercats</div>')}`
 ```
+
 ### If you don't like the colors, you can override them.
 ```javascript
 import anHtmlFile from './anHtmlFile.html';
 copyCodeBlock(anHtmlFile, options);
 ```
 The options argument is an object. You can find the defaults
-[here](https://github.com/Pickra/copy-code-block/blob/master/src/helpers.js#L22).
+[here](./src/helpers.js#L43).
+
+### Using code highlighting
+If you want code highlighting, you'll need to `npm install highlight.js`.
+Then you need to initialize your language(s):
+```javascript
+import hljs from 'highlight.js/lib/highlight';
+hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
+```
+Or, if you want all of the languages:
+```javascript
+import 'highlight.js';
+```
+Then, when you're calling `copyCodeBlock`, tell it what language to use:
+```javascript
+import anHtmlFile from './anHtmlFile.html';
+copyCodeBlock(anHtmlFile, { lang: 'html' });
+```
 
 ## Dev
 **Requirements:** `node` 6.0.0 or higher, `npm` 3.8.6 or higher

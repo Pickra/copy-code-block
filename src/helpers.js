@@ -18,13 +18,12 @@ const escapeString = string => [].map.call(string, s => {
 
 export const getDisplayString = hljs
 ?   (string, { lang }) => {
-    // if (lang && !hljs.getLanguage(lang)) {
-    //     hljs.registerLanguage(lang, require(`highlight.js/lib/languages/${lang}`));
-    // }
     const codeBlock = document.createElement('code');
     codeBlock.className = `${lang}`;
     codeBlock.innerHTML = escapeString(string);
+
     hljs.highlightBlock(codeBlock);
+
     return codeBlock.outerHTML;
 }
 :   str => escapeString(str).replace(/\n/g, '<br/>');
