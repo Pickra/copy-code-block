@@ -40,7 +40,7 @@ import anHtmlFile from './anHtmlFile.html';
 copyCodeBlock(anHtmlFile, options);
 ```
 The options argument is an object. You can find the defaults
-[here](./src/helpers.js#L43).
+[here](./src/helpers.js#L42).
 
 ### Using code highlighting
 If you want code highlighting, you'll need to `npm install highlight.js`.
@@ -58,6 +58,7 @@ Then, when you're calling `copyCodeBlock`, tell it what language to use:
 import anHtmlFile from './anHtmlFile.html';
 copyCodeBlock(anHtmlFile, { lang: 'html' });
 ```
+You can choose colors for specific code segments; look at [the rust example](./src/examples/Simple.stories.js#L52) for an idea of how to do this.
 
 ## Dev
 **Requirements:** `node` 6.0.0 or higher, `npm` 3.8.6 or higher
