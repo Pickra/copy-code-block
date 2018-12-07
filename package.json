@@ -2,10 +2,11 @@
   "name": "@pickra/copy-code-block",
   "version": "0.0.1",
   "description": "A solution to display code in the browser and copy it to the clipboard",
-  "main": "dist/index.js",
+  "main": "dist/copyCodeBlock.js",
   "scripts": {
     "start": "start-storybook --ci -p 8080 -c .storybook",
-    "test": "nightwatch"
+    "test": "nightwatch",
+    "build": "webpack -p"
   },
   "keywords": [
     "copy",
@@ -23,6 +24,8 @@
     "highlight.js": "^9.13.1",
     "nightwatch": "1.0.14",
     "selenium-server": "3.141.59",
-    "url-loader": "^1.1.2"
+    "url-loader": "^1.1.2",
+    "webpack": "4.27.1",
+    "webpack-cli": "3.1.2"
   }
 }
