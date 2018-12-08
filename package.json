@@ -20,7 +20,9 @@
     "babel-loader": "8.0.4",
     "chromedriver": "2.44.1",
     "csjs-inject": "1.0.1",
+    "highlight.js": "^9.13.1",
     "nightwatch": "1.0.14",
-    "selenium-server": "3.141.59"
+    "selenium-server": "3.141.59",
+    "url-loader": "^1.1.2"
   }
 }

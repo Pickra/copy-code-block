@@ -1,14 +1,12 @@
 import { getDisplayString, getClipboardString } from './helpers';
 import styles from './styles';
 
-export default (string, opts) => {
+export default (string, opts = {}) => {
     const { container, displayCode, copyButton } = styles(opts);
 
     return `
         <div class='${container}'>
-            <span class='${displayCode}'>
-                ${getDisplayString(string)}
-            </span>
+            <pre class='${displayCode}'>${getDisplayString(string, opts)}</pre>
             <button
                 type='button'
                 class='${copyButton}'
