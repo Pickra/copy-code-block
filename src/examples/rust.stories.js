@@ -21,7 +21,7 @@ fn main() {
 const hljsOpts = {
   lang: 'rust',
   colors: {
-    foreground: '#222',
+    textColor: '#222',
     function: '#266',
     title: '#a42',
     comment: '#2a2',
@@ -35,7 +35,7 @@ const hljsOpts = {
 const noHljsOpts = {
   colors: {
     background: '#111',
-    foreground: '#efa',
+    textColor: '#efa',
   }
 }
 

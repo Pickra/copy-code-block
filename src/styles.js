@@ -3,9 +3,9 @@ import insertCss from 'insert-css';
 import { getMergedOptions, mergeColors } from './helpers';
 
 const ignoredColors = [
-    'foreground',
+    'textColor',
     'background',
-    'buttonForeground',
+    'buttonTextColor',
     'buttonBackground',
 ];
 
@@ -25,7 +25,7 @@ export default customOptions => {
             margin-bottom: ${containerMarginBottom};
             box-sizing: border-box;
             background-color: ${colors.background};
-            color: ${colors.foreground};
+            color: ${colors.textColor};
         }
 
         .container code {
@@ -48,9 +48,9 @@ export default customOptions => {
             padding: 0;
             flex-basis: ${copyButtonWidth};
             max-width: ${copyButtonWidth};
-            color: ${colors.buttonForeground || colors.foreground};
+            color: ${colors.buttonTextColor || colors.textColor};
             background-color: ${colors.buttonBackground || colors.background};
-            outline: ${copyButtonOutline} ${colors.foreground};
+            outline: ${copyButtonOutline} ${colors.textColor};
             border: none;
             font-size: ${copyButtonFontSize};
             align-self: center;
@@ -62,7 +62,7 @@ export default customOptions => {
         .copyButton:hover {
             cursor: pointer;
             color: ${colors.buttonBackground || colors.background};
-            background-color: ${colors.buttonForeground || colors.foreground};
+            background-color: ${colors.buttonTextColor || colors.textColor};
         }
     `;
 

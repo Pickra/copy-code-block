@@ -4,7 +4,7 @@ const opts = {
     lang: 'html',
     colors: {
         background: '#222',
-        foreground: '#fff',
+        textColor: '#fff',
         attr: '#fab',
         string: '#abe',
         tag: '#afa',
