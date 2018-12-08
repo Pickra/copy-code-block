@@ -35,10 +35,14 @@ const hljsOpts = {
 const noHljsOpts = {
   colors: {
     background: '#111',
-    textColor: '#efa',
+    textColor: '#efa'
   }
 }
 
 storiesOf('Rust', module)
-  .add('Rust with syntax hilighting', () => copyCodeBlock(rustExample, hljsOpts))
-  .add('Rust without styntax hilighting', () => copyCodeBlock(rustExample, noHljsOpts));
+  .add('Rust with syntax highlighting', () => copyCodeBlock(rustExample, hljsOpts))
+  .add('Rust without styntax highlighting', () => `
+    <h2>This is using:</h2>
+    <h3><pre>colors: { background: '#111', textColor: '#efa' }</pre></h3>
+    ${copyCodeBlock(rustExample, noHljsOpts)}
+  `);

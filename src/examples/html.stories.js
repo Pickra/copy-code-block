@@ -36,12 +36,13 @@ storiesOf('Simple HTML', module)
         ${doubleQuotesExample}
         ${copyCodeBlock(doubleQuotesExample, { lang: 'html' }) /* Will run through hljs, but without custom styling */}
     `)
-    .add('With syntax hilighting & built-in style', () => `
+    .add('With syntax highlighting & built-in style', () => `
         <link rel="stylesheet" href="${hljsStyle}">
+        <h2>This example is using "highlight.js/styles/a11y-light.css"</h2>
         ${doubleQuotesExample}
         ${copyCodeBlock(doubleQuotesExample, { lang: 'html' }) /* Includes custom styling */}
     `)
-    .add('With syntax hilighting & custom style', () => `
+    .add('With syntax highlighting & custom style', () => `
         ${doubleQuotesExample}
         ${customHtml(doubleQuotesExample) /* Includes custom styling */}
     `);
