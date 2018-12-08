@@ -17,7 +17,6 @@ if (hljs) hljs.configure({ useBR: true })
 const escapeString = string => [].map.call(string, s => {
     if (s.match(/</)) return '&lt;';
     else if (s.match(/>/)) return '&gt;';
-    // else if (s.match(/ /)) return '&nbsp;';
     else if (s.match(/\n/)) return '<br/>'
     else return s;
 }).join('')
@@ -71,7 +70,7 @@ const defaultOptions = {
 
 const defaultColors = {
     background: 'white',
-    foreground: '#0d006d',
+    textColor: textColor,
 }
 
 export const getMergedOptions = customOptions => {
