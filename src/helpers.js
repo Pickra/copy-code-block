@@ -1,5 +1,4 @@
 //////////////// COPY CODE BLOCK ////////////////
-// Iterate over the string and replace code characters as needed
 
 // use the ambient hljs by default
 let hljs = window.hljs;
@@ -12,8 +11,7 @@ try {
     // do nothing
 }
 
-if (hljs) hljs.configure({ useBR: true })
-
+// Iterate over the string and replace code characters as needed
 const escapeString = string => [].map.call(string, s => {
     if (s.match(/</)) return '&lt;';
     else if (s.match(/>/)) return '&gt;';
@@ -28,35 +26,40 @@ export const getDisplayString = (string, { lang }) => {
     const codeBlock = document.createElement('code');
     codeBlock.innerHTML = escaped;
 
-    if (lang !== undefined) {
-        if (!hljs) {
-            // falls back to not using hljs
-            console.warn('hightlight.js is not available')
-        } else if (lang !== AUTO_LANGUAGE && !hljs.getLanguage(lang)) {
-            // falls back to not using hljs
-            console.warn(`hightlight.js does not recognize the language '${lang}'.`)
-        } else {
-            if (lang !== AUTO_LANGUAGE) {
-                codeBlock.className = `${lang}`;
-            }
+    if (lang === undefined) {
+        return codeBlock.outerHTML;
+    }
 
-            hljs.highlightBlock(codeBlock);
+    if (!hljs) {
+        // falls back to not using hljs
+        console.warn('hightlight.js is not available')
+    } else if (lang !== AUTO_LANGUAGE && !hljs.getLanguage(lang)) {
+        // falls back to not using hljs
+        console.warn(`hightlight.js does not recognize the language '${lang}'.`)
+    } else {
+        hljs.configure({ useBR: true })
+        if (lang !== AUTO_LANGUAGE) {
+            codeBlock.className = `${lang}`;
         }
+
+        hljs.highlightBlock(codeBlock);
     }
 
     return codeBlock.outerHTML;
 };
 
 export const getClipboardString = string => string
-    // Replace carriage returns or newlines with encoded newlines
-    .replace(/(\r|\n)/g, '\\n')
+    // Get rid of carriage returns
+    .replace(/\r/g, '')
+    // Replace newlines with encoded newlines
+    .replace(/\n/g, '\\n')
     // Escape nested single quotes
     .replace(/'/g, '\\\'')
     // Replace double quptes w/HTML entity
     .replace(/"/g, '&quot;');
 
 //////////////// STYLES ////////////////
-const textColor = `#0d006d`;
+const textColor = `#202020`;
 
 const defaultOptions = {
     containerPadding: '0 1rem 1rem',
@@ -69,7 +72,8 @@ const defaultOptions = {
 };
 
 const defaultColors = {
-    background: 'white',
+    background: '#f7f7f7',
+    borderColor: 'rgba(0, 0, 0, 0.1)',
     textColor: textColor,
 }
 
