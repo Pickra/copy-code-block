@@ -61,7 +61,7 @@ copyCodeBlock(anHtmlFile, { lang: 'html' });
 
 If you supply `lang: 'auto'`, this will tell highlight.js to attempt to automatically choose a language from whichever ones are loaded.
 
-You can choose colors for specific code segments.  For an idea of how to do this look at [the custom html example](./src/examples/customHtml.js) or [the custom rust example](./src/examples/customRust.js).  Note that any camelCase color gets converted to hyphen-case, such as `metaString` getting converted to `meta-string` in the rust example.
+You can choose colors for specific code segments.  For an idea of how to do this look at [the custom html example](./src/examples/customHtml.js) or [the custom rust example](./src/examples/customRust.js).  Note that any camelCase color gets converted to hyphen-case, such as `metaString` getting converted to `meta-string` in the rust example.  For a complete list of `hljs` classes, see [their CSS class reference](https://github.com/highlightjs/highlight.js/blob/master/docs/css-classes-reference.rst#stylable-classes).  To see which classes are used by a specific language, find the language [from the complete list](https://github.com/highlightjs/highlight.js/tree/master/src/languages) and look for properties called `className`.
 
 There are four special colors: `foreground`, `background`, `buttonForeground`, and `buttonBackground`.  These are the colors used for `color` and `backgroundColor` for the entire code block.  If no `buttonForeground` or `buttonBackground` is supplied, they fall back to `foreground` or `background` respectively.
 
