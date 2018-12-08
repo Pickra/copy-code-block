@@ -17,7 +17,7 @@ if (hljs) hljs.configure({ useBR: true })
 const escapeString = string => [].map.call(string, s => {
     if (s.match(/</)) return '&lt;';
     else if (s.match(/>/)) return '&gt;';
-    else if (s.match(/ /)) return '&nbsp;';
+    // else if (s.match(/ /)) return '&nbsp;';
     else if (s.match(/\n/)) return '<br/>'
     else return s;
 }).join('')
@@ -26,6 +26,8 @@ const AUTO_LANGUAGE = 'auto'
 
 export const getDisplayString = (string, { lang }) => {
     const escaped = escapeString(string)
+    const codeBlock = document.createElement('code');
+    codeBlock.innerHTML = escaped;
 
     if (lang !== undefined) {
         if (!hljs) {
@@ -35,19 +37,15 @@ export const getDisplayString = (string, { lang }) => {
             // falls back to not using hljs
             console.warn(`hightlight.js does not recognize the language '${lang}'.`)
         } else {
-            const codeBlock = document.createElement('code');
             if (lang !== AUTO_LANGUAGE) {
                 codeBlock.className = `${lang}`;
             }
-            codeBlock.innerHTML = escaped;
 
             hljs.highlightBlock(codeBlock);
-
-            return codeBlock.outerHTML;
         }
     }
 
-    return escaped;
+    return codeBlock.outerHTML;
 };
 
 export const getClipboardString = string => string
@@ -63,12 +61,10 @@ const textColor = `#0d006d`;
 
 const defaultOptions = {
     containerPadding: '0 1rem 1rem',
-    containerColor: textColor,
     containerMarginBottom: '2rem',
     displayCodeWidth: '80%',
     copyButtonWidth: '20%',
     copyButtonHeight: '2rem',
-    copyButtonColor: textColor,
     copyButtonOutline: `2px solid`,
     copyButtonFontSize: '1rem'
 };

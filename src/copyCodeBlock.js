@@ -6,9 +6,7 @@ export default (string, opts = {}) => {
 
     return `
         <div class='${container}'>
-            <pre class='${displayCode}'>
-                ${getDisplayString(string, opts)}
-            </pre>
+            <pre class='${displayCode}'>${getDisplayString(string, opts)}</pre>
             <button
                 type='button'
                 class='${copyButton}'
