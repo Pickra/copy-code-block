@@ -26,6 +26,7 @@ export default customOptions => {
             box-sizing: border-box;
             background-color: ${colors.background};
             color: ${colors.textColor};
+            border: 1px solid ${colors.borderColor};
         }
 
         .container code {
@@ -75,6 +76,7 @@ export default customOptions => {
         }).join('\n')
 
     insertCss(csjs.getCss(cssMap) + hljsStyles + `
+    .${cssMap.container} .hljs { background: ${colors.background}; }
     .${cssMap.container} .hljs-emphasis { font-style: italic; }
     .${cssMap.container} .hljs-strong { font-weight: bold; }
     `)
