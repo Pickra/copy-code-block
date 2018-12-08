@@ -40,7 +40,7 @@ import anHtmlFile from './anHtmlFile.html';
 copyCodeBlock(anHtmlFile, options);
 ```
 The options argument is an object. You can find the defaults
-[here](./src/helpers.js#L61).
+[here](./src/helpers.js#L64).
 
 ### Using syntax highlighting
 If you want syntax highlighting, you'll need to `npm install highlight.js`.
