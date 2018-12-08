@@ -28,6 +28,12 @@ export default customOptions => {
             color: ${colors.foreground};
         }
 
+        .container code {
+            display: block;
+            overflow-x: auto;
+            padding: 0.5em;
+        }
+
         .container pre {
             margin: 0;
         }
@@ -71,11 +77,7 @@ export default customOptions => {
     insertCss(csjs.getCss(cssMap) + hljsStyles + `
     .${cssMap.container} .hljs-emphasis { font-style: italic; }
     .${cssMap.container} .hljs-strong { font-weight: bold; }
-    .${cssMap.container} .hljs {
-        display: block;
-        overflow-x: auto;
-        padding: 0.5em;
-    }`)
+    `)
 
 
 
