@@ -60,7 +60,7 @@ export default customOptions => {
             min-width: 3em;
         }
 
-        .copyButton:hover {
+        .copyButton:hover, .copyButton:focus {
             cursor: pointer;
             color: ${colors.buttonBackground || colors.background};
             background-color: ${colors.buttonTextColor || colors.textColor};

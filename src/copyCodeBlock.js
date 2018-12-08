@@ -2,14 +2,17 @@ import { getDisplayString, getClipboardString } from './helpers';
 import styles from './styles';
 
 export default (string, opts = {}) => {
+    const lang = opts && opts.lang || '';
     const { container, displayCode, copyButton } = styles(opts);
+    const buttonText = 'Click to copy';
 
     return `
-        <div class='${container}'>
+        <section class='${container}' aria-label='${lang} code block' tabindex='0'>
             <pre class='${displayCode}'>${getDisplayString(string, opts)}</pre>
             <button
                 type='button'
                 class='${copyButton}'
+                aria-live='polite'
                 onclick="(function() {
                     var textarea = document.createElement('textarea');
                     var button = document.querySelector('.${copyButton}');
@@ -19,12 +22,12 @@ export default (string, opts = {}) => {
                     textarea.select();
 
                     button.innerHTML = 'Copied!';
-                    setTimeout(function() { button.innerHTML = 'Copy'; }, 1000);
+                    setTimeout(function() { button.innerHTML = '${buttonText}'; }, 1500);
 
                     document.execCommand('copy');
                     document.body.removeChild(textarea);
                 })();"
-            >Copy</button>
-        </div>
+            >${buttonText}</button>
+        </section>
     `;
 };
