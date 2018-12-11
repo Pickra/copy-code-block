@@ -13,9 +13,17 @@ try {
 
 const AUTO_LANGUAGE = 'auto'
 
+// Iterate over the string and replace code characters as needed
+const escapeString = string => [].map.call(string, s => {
+    if (s.match(/</)) return '&lt;';
+    else if (s.match(/>/)) return '&gt;';
+    else if (s.match(/\n/)) return '<br/>';
+    else return s;
+}).join('')
+
 export const getDisplayString = (string, { lang }) => {
     if (lang === undefined) {
-        return `<code>${string}</code>`;
+        return `<code>${escapeString(string)}</code>`;
     }
 
     if (!hljs) {
@@ -32,7 +40,7 @@ export const getDisplayString = (string, { lang }) => {
         return `<code class="hljs ${lang}">${highlighted.value}</code>`;
     }
 
-    return `<code>${string}</code>`;
+    return `<code>${escapeString(string)}</code>`;
 };
 
 export const getClipboardString = string => string
