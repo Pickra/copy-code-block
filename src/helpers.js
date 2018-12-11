@@ -11,41 +11,36 @@ try {
     // do nothing
 }
 
+const AUTO_LANGUAGE = 'auto'
+
 // Iterate over the string and replace code characters as needed
 const escapeString = string => [].map.call(string, s => {
     if (s.match(/</)) return '&lt;';
     else if (s.match(/>/)) return '&gt;';
-    else if (s.match(/\n/)) return '<br/>'
+    else if (s.match(/\n/)) return '<br/>';
     else return s;
 }).join('')
 
-const AUTO_LANGUAGE = 'auto'
-
 export const getDisplayString = (string, { lang }) => {
-    const escaped = escapeString(string)
-    const codeBlock = document.createElement('code');
-    codeBlock.innerHTML = escaped;
-
     if (lang === undefined) {
-        return codeBlock.outerHTML;
+        return `<code>${escapeString(string)}</code>`;
     }
 
     if (!hljs) {
         // falls back to not using hljs
-        console.warn('hightlight.js is not available')
+        console.warn('hightlight.js is not available');
     } else if (lang !== AUTO_LANGUAGE && !hljs.getLanguage(lang)) {
         // falls back to not using hljs
-        console.warn(`hightlight.js does not recognize the language '${lang}'.`)
+        console.warn(`hightlight.js does not recognize the language '${lang}'.`);
     } else {
-        hljs.configure({ useBR: true })
-        if (lang !== AUTO_LANGUAGE) {
-            codeBlock.className = `${lang}`;
-        }
+        const highlighted = lang !== AUTO_LANGUAGE
+            ? hljs.highlight(lang, string, true)
+            : hljs.highlightAuto(string);
 
-        hljs.highlightBlock(codeBlock);
+        return `<code class="hljs ${lang}">${highlighted.value}</code>`;
     }
 
-    return codeBlock.outerHTML;
+    return `<code>${escapeString(string)}</code>`;
 };
 
 export const getClipboardString = string => string
