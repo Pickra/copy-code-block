@@ -30,7 +30,7 @@ copyCodeBlock(htmlString${optionsExample});
 };
 
 export const usageExampleJsHighlight = {
-    lang: 'js',
+    lang: 'javascript',
     colors: {
         background: '#282a36',
         textColor: '#fff',

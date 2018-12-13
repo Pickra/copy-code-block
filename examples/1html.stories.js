@@ -50,9 +50,9 @@ storiesOf('HTML', module)
             from highlight.js, by adding it to the HTML's stylesheets.
         </p>
         <h2>Example Code</h2>
-        ${copyCodeBlock(htmlExample, {lang: 'html'}) /* Run through hljs, no custom styles */}
+        ${copyCodeBlock(htmlExample, {lang: 'xml'}) /* Run through hljs, no custom styles */}
         <h2>Usage</h2>
-        ${copyCodeBlock(usageExample({lang: 'html'}), usageExampleJsHighlight)}
+        ${copyCodeBlock(usageExample({lang: 'xml'}), usageExampleJsHighlight)}
     `)
     .add('Syntax highlighting & custom styles', () => `
         <link rel="stylesheet" href="${a11yLightStyle}">
