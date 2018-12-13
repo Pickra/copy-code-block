@@ -1,6 +1,6 @@
 import copyCodeBlock from '../copyCodeBlock';
 
-const opts = {
+export const opts = {
     lang: 'html',
     colors: {
         background: '#222',
@@ -12,4 +12,11 @@ const opts = {
     }
 };
 
-export default string => copyCodeBlock(string, opts);
+export const customStyles = {
+    // no hljs
+    colors: { background: "#fa8072", textColor: "#4e2576"},
+    displayCodeWidth: "50%",
+    copyButtonWidth: "50%"
+};
+
+export const customHtml = string => copyCodeBlock(string, opts);

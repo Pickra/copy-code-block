@@ -13,9 +13,8 @@ export default customOptions => {
     const colors = mergeColors(customOptions.colors);
 
     const {
-        containerPadding,
-        containerMarginBottom, displayCodeWidth, copyButtonWidth,
-        copyButtonHeight, copyButtonFontSize, copyButtonOutline
+        containerPadding, containerMarginBottom, displayCodeWidth,
+        copyButtonPadding, copyButtonWidth, copyButtonFontSize, copyButtonOutline
     } = getMergedOptions(customOptions);
 
     const cssMap = csjs`
@@ -32,12 +31,10 @@ export default customOptions => {
         .container code {
             display: block;
             overflow-x: auto;
-            padding: 0.5em;
+            padding: 0 1rem 1rem;
         }
 
-        .container pre {
-            margin: 0;
-        }
+        .container pre { margin: 0; }
 
         .displayCode {
             flex-basis: ${displayCodeWidth};
@@ -45,8 +42,7 @@ export default customOptions => {
         }
 
         .copyButton {
-            height: ${copyButtonHeight};
-            padding: 0;
+            padding: ${copyButtonPadding};
             flex-basis: ${copyButtonWidth};
             max-width: ${copyButtonWidth};
             color: ${colors.buttonTextColor || colors.textColor};
@@ -57,7 +53,6 @@ export default customOptions => {
             align-self: center;
             box-sizing: border-box;
             margin-left: 1em;
-            min-width: 3em;
         }
 
         .copyButton:hover, .copyButton:focus {
@@ -72,16 +67,18 @@ export default customOptions => {
         .map(name => {
             // convert from camelCase to hyphen-case
             const type = name.replace(/[A-Z]/g, char => `-${char.toLowerCase()}`);
+
             return `.${cssMap.container} .hljs-${type} { color: ${colors[name]}; }`;
-        }).join('\n')
+        }).join('\n');
 
-    insertCss(csjs.getCss(cssMap) + hljsStyles + `
-    .${cssMap.container} .hljs { background: ${colors.background}; }
-    .${cssMap.container} .hljs-emphasis { font-style: italic; }
-    .${cssMap.container} .hljs-strong { font-weight: bold; }
-    `)
-
-
+    // hljs overrides
+    insertCss(
+        csjs.getCss(cssMap) + hljsStyles + `
+            .${cssMap.container} .hljs { background: ${colors.background}; }
+            .${cssMap.container} .hljs-emphasis { font-style: italic; }
+            .${cssMap.container} .hljs-strong { font-weight: bold; }
+        `
+    );
 
     return cssMap;
 };
