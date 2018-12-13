@@ -1,36 +1,52 @@
 import { storiesOf } from '@storybook/html';
-import copyCodeBlock from '../copyCodeBlock';
+import copyCodeBlock from '../src/copyCodeBlock';
 import { customStyles } from './customHtml';
-import { usageExample, usageExampleJsHighlight } from '../helpers';
+import { usageExample, usageExampleJsHighlight } from './helpers';
 import hljs from 'highlight.js/lib/highlight';
 
 // Register languages for hljs
+hljs.registerLanguage('css', require('highlight.js/lib/languages/css'));
 hljs.registerLanguage('js', require('highlight.js/lib/languages/javascript'));
 
 const a11yLightStyle = require('!url-loader!highlight.js/styles/a11y-light.css');
 const draculaStyle = require('!url-loader!highlight.js/styles/dracula.css');
 
-const jsExample = `
-import { Pants } from 'fancy-things';
+const opts = {
+    lang: 'css',
+    colors: {
+        'selector-class': 'rebeccapurple',
+        attribute: 'green',
+        number: 'salmon'
+    }
+};
 
-var cool = 'cool';
-let stuff = 'stuff';
-const things = 'things';
+const cssExample = `
+    .cool-container {
+        display: flex;
+        border: 1px solid salmon;
+        font-size: 16px;
+    }
 
-function coolStuffAndThings(a, b, c) {
-    return \`\$\{a\}\ \$\{b\}\ and \$\{c\}\`;
-}
+    .cool-description {
+        padding: 1rem;
+        flex-basis: 80%;
+        max-width: 80%;
+    }
 
-coolStuffAndThings(cool, stuff, things);
-Pants();
+    .cool-list {
+        flex-basis: 20%;
+        max-width: 20%;
+    }
+
+    .cool-item { color: salmon; }
 `;
 
-storiesOf('Javascript', module)
+storiesOf('CSS', module)
     .add('Default', () => `
         <link rel="stylesheet" href="${draculaStyle}">
         <h1>Default</h1>
         <h2>Example Code</h2>
-        ${copyCodeBlock(jsExample) /* Will not run through hljs */}
+        ${copyCodeBlock(cssExample) /* Will not run through hljs */}
         <h2>Usage</h2>
         ${copyCodeBlock(usageExample(), usageExampleJsHighlight)}
     `)
@@ -38,7 +54,7 @@ storiesOf('Javascript', module)
         <link rel="stylesheet" href="${draculaStyle}">
         <h1>Custom styles, no syntax highlighting</h1>
         <h2>Example Code</h2>
-        ${copyCodeBlock(jsExample, customStyles) /* Still not run through hljs */}
+        ${copyCodeBlock(cssExample, customStyles) /* Still not run through hljs */}
         <h2>Usage</h2>
         ${copyCodeBlock(usageExample(customStyles), usageExampleJsHighlight)}
     `)
@@ -54,15 +70,15 @@ storiesOf('Javascript', module)
             from highlight.js, by adding it to the HTML's stylesheets.
         </p>
         <h2>Example Code</h2>
-        ${copyCodeBlock(jsExample, {lang: 'js'}) /* Run through hljs, no custom styles */}
+        ${copyCodeBlock(cssExample, {lang: 'css'}) /* Run through hljs, no custom styles */}
         <h2>Usage</h2>
-        ${copyCodeBlock(usageExample({lang: 'js'}), usageExampleJsHighlight)}
+        ${copyCodeBlock(usageExample({lang: 'css'}), usageExampleJsHighlight)}
     `)
     .add('Syntax highlighting & custom styles', () => `
         <link rel="stylesheet" href="${a11yLightStyle}">
         <h1>Syntax highlighting & custom styles</h1>
         <h2>Example Code</h2>
-        ${copyCodeBlock(jsExample, usageExampleJsHighlight) /* Run through hljs, w/custom styles */}
+        ${copyCodeBlock(cssExample, opts) /* Run through hljs, w/custom styles */}
         <h2>Usage</h2>
-        ${copyCodeBlock(usageExample(usageExampleJsHighlight), usageExampleJsHighlight)}
+        ${copyCodeBlock(usageExample(opts), usageExampleJsHighlight)}
     `);

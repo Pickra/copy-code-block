@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/html';
-import copyCodeBlock from '../copyCodeBlock';
-import { usageExample, usageExampleJsHighlight } from '../helpers';
+import copyCodeBlock from '../src/copyCodeBlock';
+import { usageExample, usageExampleJsHighlight } from './helpers';
 import hljs from 'highlight.js/lib/highlight';
 
 // Register languages for hljs

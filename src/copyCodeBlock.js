@@ -1,4 +1,4 @@
-import { getDisplayString, getClipboardString } from './helpers';
+import { getDisplayString, getClipboardString } from './utils';
 import styles from './styles';
 
 export default (string, opts = {}) => {

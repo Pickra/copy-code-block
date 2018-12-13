@@ -23,6 +23,9 @@ I wanted to use [@storybook/html](https://www.npmjs.com/package/@storybook/html)
 
 Enter `copy-code-block`, a solution to display code in the browser and copy it to the clipboard.
 
+But `copy-code-block` isn't just for storybook, it'll work for
+anywhere javascript is used.
+
 ## Credit
 Couldn't have done this without [kgroat](https://github.com/kgroat).
 
@@ -60,7 +63,7 @@ The options argument is an object. There are five special colors:
 
 These are the colors used for `color`, `backgroundColor`, and `borderColor` for the entire code block as well as the copy button.  If no `buttonTextColor` or `buttonBackground` is supplied, they fall back to `textColor` or `background` respectively.
 
-You can find the defaults [here](./src/helpers.js#L64).
+You can find the defaults [here](./src/utils.js#L58).
 
 ### Syntax highlighting
 If you want syntax highlighting, you'll need to `npm install highlight.js`.
@@ -86,7 +89,7 @@ highlighting. It will still affect the `.copyButton`, assuming you haven't used
 `buttonTextColor` or `copyButtonOutline`.
 
 #### Syntax highlighting for specific code segments.
-For an idea of how to do this look at [the custom html example](./src/examples/customHtml.js) or [the custom rust example](./src/examples/rust.stories.js#L23).
+For an idea of how to do this look at [the custom html example](./examples/customHtml.js) or [the custom rust example](./examples/rust.stories.js#L23).
 
 Note that any camelCase color gets converted to hyphen-case, such as `metaString` getting converted to `meta-string` in the rust example.
 

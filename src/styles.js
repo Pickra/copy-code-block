@@ -1,6 +1,6 @@
 import csjs from 'csjs';
 import insertCss from 'insert-css';
-import { getMergedOptions, mergeColors } from './helpers';
+import { getMergedOptions, mergeColors } from './utils';
 
 const ignoredColors = [
     'textColor',

@@ -1,4 +1,4 @@
-import copyCodeBlock from '../copyCodeBlock';
+import copyCodeBlock from '../src/copyCodeBlock';
 
 export const opts = {
     lang: 'html',
