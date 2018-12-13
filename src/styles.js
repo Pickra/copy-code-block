@@ -70,11 +70,14 @@ export default customOptions => {
 
             return `.${cssMap.container} .hljs-${type} { color: ${colors[name]}; }`;
         }).join('\n');
+    const hasTextColorOverride = customOptions.colors && !!customOptions.colors.textColor
 
     // hljs overrides
     insertCss(
         csjs.getCss(cssMap) + hljsStyles + `
-            .${cssMap.container} .hljs { background: ${colors.background}; }
+            .${cssMap.container} .hljs {
+                background: ${colors.background};
+                color: ${hasTextColorOverride ? colors.textColor : ''};
             .${cssMap.container} .hljs-emphasis { font-style: italic; }
             .${cssMap.container} .hljs-strong { font-weight: bold; }
         `
