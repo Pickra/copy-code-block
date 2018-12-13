@@ -1,7 +1,7 @@
-import copyCodeBlock from '../copyCodeBlock';
+import copyCodeBlock from '../src/copyCodeBlock';
 
 export const opts = {
-    lang: 'html',
+    lang: 'xml',
     colors: {
         background: '#222',
         textColor: '#fff',

@@ -1,11 +1,11 @@
 import { storiesOf } from '@storybook/html';
-import copyCodeBlock from '../copyCodeBlock';
-import { usageExample, usageExampleJsHighlight } from '../helpers';
+import copyCodeBlock from '../src/copyCodeBlock';
+import { usageExample, usageExampleJsHighlight } from './helpers';
 import hljs from 'highlight.js/lib/highlight';
 
 // Register languages for hljs
 hljs.registerLanguage('rust', require('highlight.js/lib/languages/rust'));
-hljs.registerLanguage('js', require('highlight.js/lib/languages/javascript'));
+hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
 
 const a11yLightStyle = require('!url-loader!highlight.js/styles/a11y-light.css');
 const draculaStyle = require('!url-loader!highlight.js/styles/dracula.css');

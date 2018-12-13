@@ -1,13 +1,12 @@
-
 import { storiesOf } from '@storybook/html';
-import copyCodeBlock from '../copyCodeBlock';
+import copyCodeBlock from '../src/copyCodeBlock';
 import { customStyles, customHtml, opts } from './customHtml';
-import { usageExample, usageExampleJsHighlight } from '../helpers';
+import { usageExample, usageExampleJsHighlight } from './helpers';
 import hljs from 'highlight.js/lib/highlight';
 
 // Register languages for hljs
 hljs.registerLanguage('html', require('highlight.js/lib/languages/xml'));
-hljs.registerLanguage('js', require('highlight.js/lib/languages/javascript'));
+hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
 
 const a11yLightStyle = require('!url-loader!highlight.js/styles/a11y-light.css');
 const draculaStyle = require('!url-loader!highlight.js/styles/dracula.css');
@@ -51,9 +50,9 @@ storiesOf('HTML', module)
             from highlight.js, by adding it to the HTML's stylesheets.
         </p>
         <h2>Example Code</h2>
-        ${copyCodeBlock(htmlExample, {lang: 'html'}) /* Run through hljs, no custom styles */}
+        ${copyCodeBlock(htmlExample, {lang: 'xml'}) /* Run through hljs, no custom styles */}
         <h2>Usage</h2>
-        ${copyCodeBlock(usageExample({lang: 'html'}), usageExampleJsHighlight)}
+        ${copyCodeBlock(usageExample({lang: 'xml'}), usageExampleJsHighlight)}
     `)
     .add('Syntax highlighting & custom styles', () => `
         <link rel="stylesheet" href="${a11yLightStyle}">

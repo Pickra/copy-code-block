@@ -1,11 +1,11 @@
 import { storiesOf } from '@storybook/html';
-import copyCodeBlock from '../copyCodeBlock';
+import copyCodeBlock from '../src/copyCodeBlock';
 import { customStyles } from './customHtml';
-import { usageExample, usageExampleJsHighlight } from '../helpers';
+import { usageExample, usageExampleJsHighlight } from './helpers';
 import hljs from 'highlight.js/lib/highlight';
 
 // Register languages for hljs
-hljs.registerLanguage('js', require('highlight.js/lib/languages/javascript'));
+hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
 
 const a11yLightStyle = require('!url-loader!highlight.js/styles/a11y-light.css');
 const draculaStyle = require('!url-loader!highlight.js/styles/dracula.css');
@@ -54,9 +54,9 @@ storiesOf('Javascript', module)
             from highlight.js, by adding it to the HTML's stylesheets.
         </p>
         <h2>Example Code</h2>
-        ${copyCodeBlock(jsExample, {lang: 'js'}) /* Run through hljs, no custom styles */}
+        ${copyCodeBlock(jsExample, {lang: 'javascript'}) /* Run through hljs, no custom styles */}
         <h2>Usage</h2>
-        ${copyCodeBlock(usageExample({lang: 'js'}), usageExampleJsHighlight)}
+        ${copyCodeBlock(usageExample({lang: 'javascript'}), usageExampleJsHighlight)}
     `)
     .add('Syntax highlighting & custom styles', () => `
         <link rel="stylesheet" href="${a11yLightStyle}">
