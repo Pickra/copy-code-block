@@ -31,9 +31,9 @@ Couldn't have done this without [kgroat](https://github.com/kgroat).
 
 ## Usage
 ```javascript
-import copyCodeBlock from 'copy-code-block';
+import copyCodeBlock from '@pickra/copy-code-block';
 // OR
-const copyCodeBlock = require('copy-code-block');
+const copyCodeBlock = require('@pickra/copy-code-block');
 ```
 Then add it to your code
 ```javascript
