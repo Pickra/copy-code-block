@@ -5,7 +5,7 @@ import { usageExample, usageExampleJsHighlight } from './helpers';
 import hljs from 'highlight.js/lib/highlight';
 
 // Register languages for hljs
-hljs.registerLanguage('js', require('highlight.js/lib/languages/javascript'));
+hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
 
 const a11yLightStyle = require('!url-loader!highlight.js/styles/a11y-light.css');
 const draculaStyle = require('!url-loader!highlight.js/styles/dracula.css');
