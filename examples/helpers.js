@@ -13,9 +13,13 @@ export const usageExample = (opts = null, codeFileExt = '') => {
     const options = !opts ? '' : `const options = ${displayOpts(opts)};`;
     const optionsExample = !opts ? '' : ', options';
 
-    const codeFile = !!codeFileExt ? `import * as displayCode from './path/fileName.${codeFileExt}'` : '';
-    const codeString = !codeFileExt ? "const displayCode = 'Just pretend this is the Example Code from above';" : '';
+    const codeFile = codeFileExt && `import * as displayCode from './path/fileName.${codeFileExt}'`;
 
+    const codeString = !codeFileExt
+        ? "const displayCode = 'Just pretend this is the Example Code from above';"
+        : '';
+
+// Bad spacing due to display code presentation
 const hljs = !opts || !opts.lang ? '' : `
 import hljs from 'highlight.js/lib/highlight';
 // Register language for hljs

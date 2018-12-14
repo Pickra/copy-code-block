@@ -98,6 +98,9 @@ storiesOf('CSS', module)
         link.rel = 'stylesheet';
         link.href = draculaStyle;
 
+        const titleHeader = document.createElement('h1');
+        titleHeader.innerHTML = 'Return DOM element';
+
         const exampleHeader = document.createElement('h2');
         exampleHeader.innerHTML = 'Example Code';
 
@@ -109,6 +112,6 @@ storiesOf('CSS', module)
         const jsUsageExample = document.createElement('div');
         jsUsageExample.innerHTML = copyCodeBlock(usageExample(options), usageExampleJsHighlight);
 
-        container.append(link, exampleHeader, domEl, usageHeader, jsUsageExample);
+        container.append(link, titleHeader, exampleHeader, domEl, usageHeader, jsUsageExample);
         return container;
     });
