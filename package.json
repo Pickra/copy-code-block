@@ -6,6 +6,7 @@
   "scripts": {
     "start": "start-storybook --ci -p 8080 -c .storybook",
     "test": "nightwatch",
+    "pages": "build-storybook -c .storybook -o public",
     "build": "webpack -p"
   },
   "keywords": [
