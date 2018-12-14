@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/html';
 import copyCodeBlock from '../src/copyCodeBlock';
 import { customStyles, customHtml, opts } from './customHtml';
 import { usageExample, usageExampleJsHighlight } from './helpers';
+import * as htmlExample from './html-example.html';
 import hljs from 'highlight.js/lib/highlight';
 
 // Register languages for hljs
@@ -11,20 +12,18 @@ hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascri
 const a11yLightStyle = require('!url-loader!highlight.js/styles/a11y-light.css');
 const draculaStyle = require('!url-loader!highlight.js/styles/dracula.css');
 
-const htmlExample = `
-<div class='cool-container'>
-    <p class='cool-description'>Get ready for...</p>
-    <ul class='cool-list'>
-        <li class='cool-item'>rainbows</li>
-        <li class='cool-item'>and</li>
-        <li class='cool-item'>unicorns</li>
-    </ul>
-</div>`;
-
 storiesOf('HTML', module)
-    .add('Default', () => `
+    .add('Code File', () => `
         <link rel="stylesheet" href="${draculaStyle}">
-        <h1>Default</h1>
+        <h1>Code File</h1>
+        <h2>Example Code</h2>
+        ${copyCodeBlock(htmlExample) /* Will not run through hljs */}
+        <h2>Usage</h2>
+        ${copyCodeBlock(usageExample(null, 'html'), usageExampleJsHighlight)}
+    `)
+    .add('Code String', () => `
+        <link rel="stylesheet" href="${draculaStyle}">
+        <h1>Code String</h1>
         <h2>Example Code</h2>
         ${copyCodeBlock(htmlExample) /* Will not run through hljs */}
         <h2>Usage</h2>

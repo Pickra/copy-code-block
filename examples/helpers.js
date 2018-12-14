@@ -9,9 +9,12 @@ const displayOpts = opts => '{' + Object.entries(opts).map(arr => {
     return ` ${key}: '${val}'`;
 }) + '}';
 
-export const usageExample = (opts = null) => {
+export const usageExample = (opts = null, codeFileExt = '') => {
     const options = !opts ? '' : `const options = ${displayOpts(opts)};`;
     const optionsExample = !opts ? '' : ', options';
+
+    const codeFile = !!codeFileExt ? `import * as displayCode from './path/fileName.${codeFileExt}'` : '';
+    const codeString = !codeFileExt ? "const displayCode = 'Just pretend this is the Example Code from above';" : '';
 
 const hljs = !opts || !opts.lang ? '' : `
 import hljs from 'highlight.js/lib/highlight';
@@ -21,11 +24,12 @@ hljs.registerLanguage('${opts.lang}', require('highlight.js/lib/langs/${opts.lan
 
 return `
 import copyCodeBlock from 'copyCodeBlock';
+${codeFile}
 ${hljs}
 
-const htmlString = 'Just pretend this is the Example Code from above';
+${codeString}
 ${options}
-copyCodeBlock(htmlString${optionsExample});
+copyCodeBlock(displayCode${optionsExample});
 `
 };
 
