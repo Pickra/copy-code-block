@@ -12,19 +12,19 @@
 - [Tests](#tests)
 
 ## What
-copy-code-block accepts HTML, or HTML in a string, and returns
-a new string. The new string contains the transformed HTML and a
-button that will copy the displayed code to the clipboard. Below is the no frills default...
+copy-code-block accepts a code file or code in a string. CCB returns the transformed code and
+a button that can copy the displayed code to the clipboard.
 
+Below is the no frills default...
 ![copy-code-block example image](./img/CCB.png)
 
 ## Why
-I wanted to use [@storybook/html](https://www.npmjs.com/package/@storybook/html) to build HTML/CSS components and have the 'copy code to the clipboard' functionality from [@storybook/addon-info](https://www.npmjs.com/package/@storybook/addon-info). But this isn't [currently supported](https://github.com/storybooks/storybook/issues/4832), as of Dec, 2018.
+I wanted to use [@storybook/html](https://www.npmjs.com/package/@storybook/html) to build HTML/CSS
+components and have the 'copy code to the clipboard' functionality from [@storybook/addon-info](https://www.npmjs.com/package/@storybook/addon-info). But this isn't [currently supported](https://github.com/storybooks/storybook/issues/4832), as of Dec, 2018.
 
 Enter `copy-code-block`, a solution to display code in the browser and copy it to the clipboard.
 
-But `copy-code-block` isn't just for storybook, it'll work for
-anywhere javascript is used.
+BUT `copy-code-block` isn't just for storybook, it'll work anywhere javascript is used.
 
 ## Credit
 Couldn't have done this without [kgroat](https://github.com/kgroat).
