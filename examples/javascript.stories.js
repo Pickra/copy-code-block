@@ -26,9 +26,17 @@ Pants();
 `;
 
 storiesOf('Javascript', module)
-    .add('Default', () => `
+    .add('Code File', () => `
         <link rel="stylesheet" href="${draculaStyle}">
-        <h1>Default</h1>
+        <h1>Code File</h1>
+        <h2>Example Code</h2>
+        ${copyCodeBlock(jsExample) /* Will not run through hljs */}
+        <h2>Usage</h2>
+        ${copyCodeBlock(usageExample(null, 'js'), usageExampleJsHighlight)}
+    `)
+    .add('Code String', () => `
+        <link rel="stylesheet" href="${draculaStyle}">
+        <h1>Code String</h1>
         <h2>Example Code</h2>
         ${copyCodeBlock(jsExample) /* Will not run through hljs */}
         <h2>Usage</h2>
@@ -65,4 +73,26 @@ storiesOf('Javascript', module)
         ${copyCodeBlock(jsExample, usageExampleJsHighlight) /* Run through hljs, w/custom styles */}
         <h2>Usage</h2>
         ${copyCodeBlock(usageExample(usageExampleJsHighlight), usageExampleJsHighlight)}
-    `);
+    `)
+    .add('Return DOM element', () => {
+        const options = {shouldReturnDomEl: true};
+        const container = document.createElement('div');
+
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = draculaStyle;
+
+        const exampleHeader = document.createElement('h2');
+        exampleHeader.innerHTML = 'Example Code';
+
+        const domEl = copyCodeBlock(jsExample, options);
+
+        const usageHeader = document.createElement('h2');
+        usageHeader.innerHTML = 'Usage Code';
+
+        const jsUsageExample = document.createElement('div');
+        jsUsageExample.innerHTML = copyCodeBlock(usageExample(options), usageExampleJsHighlight);
+
+        container.append(link, exampleHeader, domEl, usageHeader, jsUsageExample);
+        return container;
+    });
