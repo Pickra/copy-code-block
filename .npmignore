@@ -1,0 +1,9 @@
+/.storybook
+/.vscode
+/examples
+/img
+/reports
+/src
+/tests
+/nightwatch*.js
+/*.log
