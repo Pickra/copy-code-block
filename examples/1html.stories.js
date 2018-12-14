@@ -5,7 +5,7 @@ import { usageExample, usageExampleJsHighlight } from './helpers';
 import hljs from 'highlight.js/lib/highlight';
 
 // Register languages for hljs
-hljs.registerLanguage('html', require('highlight.js/lib/languages/xml'));
+hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
 hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
 
 const a11yLightStyle = require('!url-loader!highlight.js/styles/a11y-light.css');
@@ -61,4 +61,26 @@ storiesOf('HTML', module)
         ${customHtml(htmlExample) /* Run through hljs, w/custom styles */}
         <h2>Usage</h2>
         ${copyCodeBlock(usageExample(opts), usageExampleJsHighlight)}
-    `);
+    `)
+    .add('Return DOM element', () => {
+        const options = {shouldReturnDomEl: true};
+        const container = document.createElement('div');
+
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = draculaStyle;
+
+        const exampleHeader = document.createElement('h2');
+        exampleHeader.innerHTML = 'Example Code';
+
+        const domEl = copyCodeBlock(htmlExample, options);
+
+        const usageHeader = document.createElement('h2');
+        usageHeader.innerHTML = 'Usage Code';
+
+        const jsUsageExample = document.createElement('div');
+        jsUsageExample.innerHTML = copyCodeBlock(usageExample(options), usageExampleJsHighlight);
+
+        container.append(link, exampleHeader, domEl, usageHeader, jsUsageExample);
+        return container;
+    });
