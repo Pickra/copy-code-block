@@ -7,7 +7,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: "[name].js",
-        libraryExport: 'copyCodeBlock',
+        libraryExport: 'default',
         libraryTarget: 'umd'
     },
     mode: "production",

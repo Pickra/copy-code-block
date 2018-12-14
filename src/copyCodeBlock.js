@@ -1,7 +1,7 @@
 import { getDisplayString, getClipboardString } from './utils';
 import styles from './styles';
 
-export const copyCodeBlock = (string, opts = {}) => {
+export default (string, opts = {}) => {
     const lang = opts && opts.lang || '';
     const { container, displayCode, copyButton } = styles(opts);
     const buttonText = 'Click to copy';
