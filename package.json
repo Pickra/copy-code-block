@@ -2,6 +2,10 @@
   "name": "@pickra/copy-code-block",
   "version": "1.0.1",
   "description": "A solution to display code in the browser and copy it to the clipboard",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pickra/copy-code-block.git"
+  },
   "main": "dist/copyCodeBlock.js",
   "scripts": {
     "start": "start-storybook --ci -p 8080 -c .storybook",
