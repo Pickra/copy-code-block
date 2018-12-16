@@ -1,6 +1,6 @@
 {
   "name": "@pickra/copy-code-block",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A solution to display code in the browser and copy it to the clipboard",
   "main": "dist/copyCodeBlock.js",
   "scripts": {
