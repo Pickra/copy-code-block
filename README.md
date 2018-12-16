@@ -27,8 +27,9 @@ components and have the 'copy code to the clipboard' functionality from [@storyb
 
 Enter `copy-code-block`, a solution to display code in the browser and copy it to the clipboard.
 
-BUT `copy-code-block` isn't just for storybook, it'll work anywhere javascript is used. AND it ~~HAS THE POWER OF GREYSKULL~~ can syntax
-highlighting any language.
+BUT `copy-code-block` isn't just for storybook, it'll work anywhere javascript is used.
+
+AND it ~~HAS THE POWER OF GREYSKULL~~ can syntax highlight any language.
 
 ## Credit
 Couldn't have done this without [kgroat](https://github.com/kgroat).
