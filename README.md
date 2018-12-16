@@ -16,6 +16,7 @@ copy-code-block accepts a code file or code in a string. CCB returns the transfo
 a button that can copy the displayed code to the clipboard.
 
 Below is the no frills default...
+
 ![copy-code-block example image](./img/CCB.png)
 
 ## Why
@@ -24,7 +25,8 @@ components and have the 'copy code to the clipboard' functionality from [@storyb
 
 Enter `copy-code-block`, a solution to display code in the browser and copy it to the clipboard.
 
-BUT `copy-code-block` isn't just for storybook, it'll work anywhere javascript is used.
+BUT `copy-code-block` isn't just for storybook, it'll work anywhere javascript is used. AND it ~~HAS THE POWER OF GREYSKULL~~ can syntax
+highlighting any language.
 
 ## Credit
 Couldn't have done this without [kgroat](https://github.com/kgroat).
@@ -54,7 +56,7 @@ OR
 import anHtmlFile from './anHtmlFile.html';
 copyCodeBlock(anHtmlFile, options);
 ```
-The options argument is an object. There are five special colors:
+The options argument is an object. There are five customizable colors:
 - `textColor`
 - `background`
 - `borderColor`
@@ -63,14 +65,14 @@ The options argument is an object. There are five special colors:
 
 These are the colors used for `color`, `backgroundColor`, and `borderColor` for the entire code block as well as the copy button.  If no `buttonTextColor` or `buttonBackground` is supplied, they fall back to `textColor` or `background` respectively.
 
-You can find the defaults [here](./src/utils.js#L58).
+You can find all the defaults [here](./src/utils.js#L58).
 
 ### Syntax highlighting
 If you want syntax highlighting, you'll need to `npm install highlight.js`.
-Then you need to initialize your language(s):
+Then you need to initialize your language:
 ```javascript
 import hljs from 'highlight.js/lib/highlight';
-hljs.registerLanguage('html', require('highlight.js/lib/languages/xml'));
+hljs.registerLanguage('xml', require('highlight.js/lib/languages/xml'));
 ```
 Or, if you want all of the languages:
 ```javascript
@@ -79,6 +81,15 @@ import 'highlight.js';
 Then, when you're calling `copyCodeBlock`, tell it what language to use:
 ```javascript
 import anHtmlFile from './anHtmlFile.html';
+copyCodeBlock(anHtmlFile, { lang: 'xml' });
+```
+
+NOTE: the 1st argument passed to `hljs.registerLanguage` is the value for lang in `copyCodeBlock`'s options object. The languages all have [aliases](https://github.com/highlightjs/highlight.js/blob/master/docs/css-classes-reference.rst#language-names-and-aliases). So if you wanted to use HTML, you could register it as `html`, a valid alias for `xml`...
+```javascript
+hljs.registerLanguage('html', require('highlight.js/lib/languages/xml'));
+```
+...but you still have to require the `xml` language. Then use `html` as the `lang` value in `copyCodeBlock`'s options object...
+```javascript
 copyCodeBlock(anHtmlFile, { lang: 'html' });
 ```
 
@@ -87,7 +98,8 @@ If you supply `lang: 'auto'`, this will tell highlight.js to attempt to automati
 #### Syntax highlighting for specific code segments.
 For an idea of how to do this look at [the custom html example](./examples/customHtml.js) or [the custom rust example](./examples/rust.stories.js#L23).
 
-NOTE: that any camelCase color gets converted to hyphen-case, such as `metaString` getting converted to `meta-string` in the rust example.
+NOTE: camelCase colors get converted to hyphen-case, such as `metaString` converts to
+`meta-string` in the rust example.
 
 For a complete list of `hljs` classes, see [their CSS class reference](https://github.com/highlightjs/highlight.js/blob/master/docs/css-classes-reference.rst#stylable-classes).  To see which classes are used by a specific language, find the language [from the complete list](https://github.com/highlightjs/highlight.js/tree/master/src/languages) and look for properties called `className`.
 

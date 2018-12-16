@@ -5,6 +5,7 @@ export default (string, opts = {}) => {
     const { lang, shouldReturnDomEl = false } = opts;
     const { container, displayCode, copyButton } = styles(opts);
     const buttonText = 'Click to copy';
+    const label = lang ? `${lang} code block` : 'code block';
 
     const onclick = btnId => `(function() {
         var textarea = document.createElement('textarea');
@@ -22,7 +23,7 @@ export default (string, opts = {}) => {
     })();`;
 
     const code = `
-        <section class='${container}' aria-label='${lang} code block' tabindex='0'>
+        <section class='${container}' aria-label='${label}' tabindex='0'>
             <pre class='${displayCode}'>${getDisplayString(string, opts)}</pre>
             <button
                 type='button'
