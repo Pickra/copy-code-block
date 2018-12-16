@@ -17,7 +17,7 @@ a button that can copy the displayed code to the clipboard.
 
 Below is the no frills default...
 
-![copy-code-block example image](./img/CCB.png)
+![copy-code-block example image](https://raw.githubusercontent.com/Pickra/copy-code-block/master/img/CCB.png)
 
 Check out the [examples](https://pickra.github.io/copy-code-block/) for all the options.
 
