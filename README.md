@@ -19,6 +19,8 @@ Below is the no frills default...
 
 ![copy-code-block example image](./img/CCB.png)
 
+Check out the [examples](https://pickra.github.io/copy-code-block/) for all the options.
+
 ## Why
 I wanted to use [@storybook/html](https://www.npmjs.com/package/@storybook/html) to build HTML/CSS
 components and have the 'copy code to the clipboard' functionality from [@storybook/addon-info](https://www.npmjs.com/package/@storybook/addon-info). But this isn't [currently supported](https://github.com/storybooks/storybook/issues/4832), as of Dec, 2018.
