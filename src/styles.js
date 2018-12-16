@@ -78,6 +78,7 @@ export default customOptions => {
             .${cssMap.container} .hljs {
                 background: ${colors.background};
                 color: ${hasTextColorOverride ? colors.textColor : ''};
+            }
             .${cssMap.container} .hljs-emphasis { font-style: italic; }
             .${cssMap.container} .hljs-strong { font-weight: bold; }
         `
