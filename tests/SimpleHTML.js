@@ -1,9 +1,8 @@
-const url = 'Simple%20HTML&selectedStory=Single%20quotes';
+const url = 'HTML&selectedStory=Code%20File';
 const button = 'button[class^="copyButton"]';
 
 const expected = `
 <div class='cool-container'>
-    <h1 class='cool-header'>HEY EVERYBODY</h1>
     <p class='cool-description'>Get ready for...</p>
     <ul class='cool-list'>
         <li class='cool-item'>rainbows</li>
