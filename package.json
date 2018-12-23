@@ -11,7 +11,11 @@
     "start": "start-storybook --ci -p 8080 -c .storybook",
     "test": "nightwatch",
     "pages": "build-storybook -c .storybook -o public",
-    "build": "webpack -p"
+    "prebuild": "concurrently -k -n -s first \"npm start\" \"sleep 15 && npm t\"",
+    "build": "webpack -p",
+    "preversion": "npm run build",
+    "version": "npx conventional-changelog-cli -p angular -i CHANGELOG.md -s -r",
+    "postversion": "npm publish && git push origin master && git push origin --tags"
   },
   "keywords": [
     "copy",
@@ -28,6 +32,7 @@
     "babel-loader": "8.0.4",
     "changelog": "^1.4.2",
     "chromedriver": "2.44.1",
+    "concurrently": "4.1.0",
     "highlight.js": "^9.13.1",
     "nightwatch": "1.0.14",
     "selenium-server": "3.141.59",
