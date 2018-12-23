@@ -7,3 +7,4 @@
 /tests
 /nightwatch*.js
 /*.log
+webpack.config.js
