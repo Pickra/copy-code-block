@@ -10,10 +10,16 @@ try {
     // do nothing
 }
 
-const AUTO_LANGUAGE = 'auto'
+const AUTO_LANGUAGE = 'auto';
 
 // Replace code characters as needed
 const escapeString = string => string
+    ///// Prevent CCB being used in an XSS attack /////
+    .replace(/&/g, '&amp;')
+    .replace(/\//g, '&#x2F;')
+    .replace(/'/g, '\'')
+    .replace(/"/g, '&quot;')
+    /////
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 
