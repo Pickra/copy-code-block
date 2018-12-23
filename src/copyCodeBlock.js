@@ -3,9 +3,11 @@ import styles from './styles';
 
 export default (string, opts = {}) => {
     const { lang, shouldReturnDomEl = false } = opts;
-    const { container, displayCode, copyButton } = styles(opts);
+    const { container, displayCode, copyButton, containerLabel } = styles(opts);
+
     const buttonText = 'Click to copy';
-    const label = lang ? `${lang} code block` : 'code block';
+    const label = `${lang ? lang + ' ': ''}code block.`;
+    const labelId = `${copyButton}`.slice(11);
 
     const onclick = btnId => `(function() {
         var textarea = document.createElement('textarea');
@@ -23,7 +25,8 @@ export default (string, opts = {}) => {
     })();`;
 
     const code = `
-        <section class='${container}' aria-label='${label}' tabindex='0'>
+        <div class='${container}' aria-labeledby='${labelId}' tabindex='0'>
+            <span id='${labelId}' class='${containerLabel}'>${label}</span>
             <pre class='${displayCode}'>${getDisplayString(string, opts)}</pre>
             <button
                 type='button'
@@ -32,7 +35,7 @@ export default (string, opts = {}) => {
                 aria-live='polite'
                 onclick="${onclick(copyButton)}"
             >${buttonText}</button>
-        </section>
+        </div>
     `;
 
     if (shouldReturnDomEl) {

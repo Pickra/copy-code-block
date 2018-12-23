@@ -36,6 +36,15 @@ export default customOptions => {
 
         .container pre { margin: 0; }
 
+        .containerLabel {
+            position: absolute;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+        }
+
         .displayCode {
             flex-basis: ${displayCodeWidth};
             max-width: ${displayCodeWidth};
