@@ -12,13 +12,10 @@ try {
 
 const AUTO_LANGUAGE = 'auto'
 
-// Iterate over the string and replace code characters as needed
-const escapeString = string => [].map.call(string, s => {
-    if (s.match(/</)) return '&lt;';
-    else if (s.match(/>/)) return '&gt;';
-    else if (s.match(/\n/)) return '<br/>';
-    else return s;
-}).join('')
+// Replace code characters as needed
+const escapeString = string => string
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 
 export const getDisplayString = (string, { lang }) => {
     if (lang === undefined) {
@@ -49,7 +46,7 @@ export const getClipboardString = string => string
     .replace(/\n/g, '\\n')
     // Escape nested single quotes
     .replace(/'/g, '\\\'')
-    // Replace double quptes w/HTML entity
+    // Replace double quotes w/HTML entity
     .replace(/"/g, '&quot;');
 
 //////////////// STYLES ////////////////
