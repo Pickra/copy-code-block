@@ -23,7 +23,7 @@ export const usageExample = (opts = null, codeFileExt = '') => {
 const hljs = !opts || !opts.lang ? '' : `
 import hljs from 'highlight.js/lib/highlight';
 // Register language for hljs
-hljs.registerLanguage('${opts.lang}', require('highlight.js/lib/langs/${opts.lang}'));
+hljs.registerLanguage('${opts.lang}', require('highlight.js/lib/languages/${opts.lang}'));
 `;
 
 return `
