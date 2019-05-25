@@ -25,7 +25,7 @@ export default (string, opts = {}) => {
     })();`;
 
     const code = `
-        <div class='${container}' aria-labeledby='${labelId}' tabindex='0'>
+        <div class='${container}' aria-labelledby='${labelId}' tabindex='0'>
             <span id='${labelId}' class='${containerLabel}'>${label}</span>
             <pre class='${displayCode}'>${getDisplayString(string, opts)}</pre>
             <button
