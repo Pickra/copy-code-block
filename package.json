@@ -13,7 +13,6 @@
     "pages": "build-storybook -c .storybook -o public",
     "prebuild": "concurrently -k -n -s first \"npm start\" \"sleep 15 && npm t\"",
     "build": "rm -rf dist && webpack -p",
-    "preversion": "npm run build",
     "version": "npx conventional-changelog-cli -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
     "postversion": "npm publish && git push origin master && git push origin --tags"
   },
