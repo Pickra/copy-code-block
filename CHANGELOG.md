@@ -1,4 +1,4 @@
-## [1.1.6](https://github.com/Pickra/copy-code-block/compare/v1.1.5...v1.1.6) (2019-07-15)
+## [1.1.7](https://github.com/Pickra/copy-code-block/compare/v1.1.5...v1.1.7) (2019-07-15)
 
 
 
