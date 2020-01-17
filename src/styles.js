@@ -25,7 +25,7 @@ export default customOptions => {
             box-sizing: border-box;
             background-color: ${colors.background};
             color: ${colors.textColor};
-            border: 1px solid ${colors.borderColor};
+            position: relative;
         }
 
         .container code {
@@ -46,22 +46,25 @@ export default customOptions => {
         }
 
         .displayCode {
-            flex-basis: ${displayCodeWidth};
-            max-width: ${displayCodeWidth};
+            max-width: 100%;
         }
 
         .copyButton {
-            padding: ${copyButtonPadding};
+            padding: 0.5rem;
             flex-basis: ${copyButtonWidth};
             max-width: ${copyButtonWidth};
             color: ${colors.buttonTextColor || colors.textColor};
             background-color: ${colors.buttonBackground || colors.background};
-            outline: ${copyButtonOutline} ${colors.textColor};
-            border: none;
+            border: 1px solid ${colors.textColor};
+            border-top: 0;
+            border-right: 0;
+            border-radius: 0 0 0 2px;
             font-size: ${copyButtonFontSize};
             align-self: center;
-            box-sizing: border-box;
             margin-left: 1em;
+            position: absolute;
+            top: 0;
+            right: 0;
         }
 
         .copyButton:hover, .copyButton:focus {

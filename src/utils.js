@@ -59,13 +59,13 @@ export const getClipboardString = string => string
 const textColor = `#202020`;
 
 const defaultOptions = {
-    containerPadding: '0 1rem 0 0',
+    containerPadding: '0',
     containerMarginBottom: '2rem',
     displayCodeWidth: '80%',
     copyButtonWidth: '20%',
     copyButtonPadding: '1rem 0',
     copyButtonOutline: `2px solid`,
-    copyButtonFontSize: '1rem'
+    copyButtonFontSize: '0.75rem'
 };
 
 const defaultColors = {
