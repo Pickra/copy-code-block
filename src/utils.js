@@ -65,7 +65,8 @@ const defaultOptions = {
     copyButtonWidth: '20%',
     copyButtonPadding: '1rem 0',
     copyButtonOutline: `2px solid`,
-    copyButtonFontSize: '1rem'
+    copyButtonFontSize: '1rem',
+    cssOverrides: ''
 };
 
 const defaultColors = {
