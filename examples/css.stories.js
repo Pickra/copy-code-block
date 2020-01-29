@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/html';
 import copyCodeBlock from '../src/copyCodeBlock';
-import { customStyles } from './customHtml';
+import { customStyles, cssOverrides } from './customHtml';
 import { usageExample, usageExampleJsHighlight } from './helpers';
 import hljs from 'highlight.js/lib/highlight';
 
@@ -89,6 +89,14 @@ storiesOf('CSS', module)
         ${copyCodeBlock(cssExample, opts) /* Run through hljs, w/custom styles */}
         <h2>Usage</h2>
         ${copyCodeBlock(usageExample(opts), usageExampleJsHighlight)}
+    `)
+    .add('CSS overrides for copy button', () => `
+        <link rel="stylesheet" href="${a11yLightStyle}">
+        <h1>CSS overrides for copy button</h1>
+        <h2>Example Code</h2>
+        ${copyCodeBlock(cssExample, cssOverrides) /* Run through hljs, w/ css overrides */}
+        <h2>Usage</h2>
+        ${copyCodeBlock(usageExample(cssOverrides), usageExampleJsHighlight)}
     `)
     .add('Return DOM element', () => {
         const options = {shouldReturnDomEl: true};
