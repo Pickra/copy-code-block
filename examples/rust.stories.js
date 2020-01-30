@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/html';
 import copyCodeBlock from '../src/copyCodeBlock';
 import { usageExample, usageExampleJsHighlight } from './helpers';
+import { cssOverrides } from './customHtml';
 import hljs from 'highlight.js/lib/highlight';
 
 // Register languages for hljs
@@ -89,6 +90,14 @@ storiesOf('Rust', module)
     ${copyCodeBlock(rustExample, hljsOpts)}
     <h2>Usage</h2>
     ${copyCodeBlock(usageExample(hljsOpts), usageExampleJsHighlight)}
+  `)
+  .add('CSS overrides for copy button', () => `
+    <link rel="stylesheet" href="${draculaStyle}">
+    <h1>Syntax highlighting, css overrides</h1>
+    <h2>Example Code</h2>
+    ${copyCodeBlock(rustExample, cssOverrides)}
+    <h2>Usage</h2>
+    ${copyCodeBlock(usageExample(cssOverrides), usageExampleJsHighlight)}
   `)
   .add('Return DOM element', () => {
     const options = {shouldReturnDomEl: true};

@@ -70,6 +70,24 @@ These are the colors used for `color`, `backgroundColor`, and `borderColor` for 
 
 You can find all the defaults [here](./src/utils.js#L58).
 
+You may also override the CSS classes by passing a template literal into the `cssOverrides` option. Such as:
+```
+{
+  cssOverrides: `
+    .container {
+      display: block;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .container code {
+      padding: 1.5rem;
+    }
+  `
+}
+```
+Examples for CSS overrides are included in the stories for each of the languages.
+
 ### Syntax highlighting
 If you want syntax highlighting, you'll need to `npm install highlight.js`.
 Then you need to initialize your language:

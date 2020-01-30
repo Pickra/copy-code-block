@@ -14,7 +14,7 @@ export default customOptions => {
 
     const {
         containerPadding, containerMarginBottom, displayCodeWidth,
-        copyButtonPadding, copyButtonWidth, copyButtonFontSize, copyButtonOutline
+        copyButtonPadding, copyButtonWidth, copyButtonFontSize, copyButtonOutline, cssOverrides
     } = getMergedOptions(customOptions);
 
     const cssMap = csjs`
@@ -69,6 +69,8 @@ export default customOptions => {
             color: ${colors.buttonBackground || colors.background};
             background-color: ${colors.buttonTextColor || colors.textColor};
         }
+
+        ${cssOverrides}
     `;
 
     const hljsStyles = Object.keys(colors)
