@@ -32,7 +32,7 @@
     "chromedriver": "2.44.1",
     "concurrently": "4.1.0",
     "highlight.js": "^9.13.1",
-    "nightwatch": "1.0.14",
+    "nightwatch": "1.7.13",
     "selenium-server": "3.141.59",
     "url-loader": "^1.1.2",
     "webpack": "4.27.1",
