@@ -36,7 +36,7 @@
     "selenium-server": "3.141.59",
     "url-loader": "^1.1.2",
     "webpack": "4.27.1",
-    "webpack-cli": "3.1.2"
+    "webpack-cli": "3.3.12"
   },
   "dependencies": {
     "csjs": "^1.1.0",
